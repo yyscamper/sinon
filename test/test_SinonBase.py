@@ -2,8 +2,8 @@ import sys
 sys.path.insert(0, '../')
 
 import unittest
-import lib.base as sinon
-from lib.base import SinonBase
+import sinon.base as sinon
+from sinon.base import SinonBase
 
 """
 ======================================================
@@ -33,7 +33,7 @@ def D_func(err=False):
     else:
         return "test_local_D_func"
 
-from TestClass import ForTestOnly
+from test.test_Class import ForTestOnly
 """
 ======================================================
                  FOR TEST ONLY END
@@ -108,7 +108,7 @@ class TestSinonBase(unittest.TestCase):
 
     def test022_constructor_module_variable(self):
         with self.assertRaises(Exception) as context:
-            base = SinonBase(os, "path") 
+            base = SinonBase(os, "path")
 
     def test023_constructor_module_repeated(self):
         base = SinonBase(os)

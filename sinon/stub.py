@@ -34,7 +34,7 @@ class SinonStub(SinonSpy):
         If the user does not specify a custom function with which to replace the original,
         then this is the function that we shall use. This function allows the user to call
         returns/throws to customize the return value.
-        
+
         Args:
             args: tuple, the arguments inputed by the user
             kwargs: dictionary, the keyword arguments inputed by the user
@@ -99,7 +99,7 @@ class SinonStub(SinonSpy):
         return len(self.__get_matching_indices(args, kwargs, args_list, kwargs_list))
 
     def __get_return_value_withargs(self, index_list, *args, **kwargs):
-        """    
+        """
         Pre-conditions:
            (1) The user has created a stub and specified the stub behaviour
            (2) The user has called the stub function with the specified "args" and "kwargs"
@@ -135,7 +135,7 @@ class SinonStub(SinonSpy):
         return c["default"](*args, **kwargs)
 
     def __get_return_value_no_withargs(self, *args, **kwargs):
-        """    
+        """
         Pre-conditions:
            (1) The user has created a stub and specified the stub behaviour
            (2) The user has called the stub function with the specified "args" and "kwargs"

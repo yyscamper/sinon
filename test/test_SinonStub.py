@@ -2,9 +2,9 @@ import sys
 sys.path.insert(0, '../')
 
 import unittest
-import lib.base as sinon
-from lib.stub import SinonStub
-from lib.sandbox import sinontest
+import sinon.base as sinon
+from sinon.stub import SinonStub
+from sinon.sandbox import sinontest
 
 """
 ======================================================
@@ -34,7 +34,7 @@ def D_func(err=False):
     else:
         return "test_local_D_func"
 
-from TestClass import ForTestOnly
+from test.test_Class import ForTestOnly
 """
 ======================================================
                  FOR TEST ONLY END

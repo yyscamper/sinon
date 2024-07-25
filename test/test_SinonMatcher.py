@@ -2,10 +2,10 @@ import sys
 sys.path.insert(0, '../')
 
 import unittest
-import lib.base as sinon
-from lib.matcher import SinonMatcher
-from lib.spy import SinonSpy
-from lib.stub import SinonStub
+import sinon.base as sinon
+from sinon.matcher import SinonMatcher
+from sinon.spy import SinonSpy
+from sinon.stub import SinonStub
 
 """
 ======================================================
@@ -23,7 +23,7 @@ class A_object(object):
 def B_func():
     pass
 
-from TestClass import ForTestOnly
+from test.test_Class import ForTestOnly
 
 """
 ======================================================

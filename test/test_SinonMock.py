@@ -2,9 +2,9 @@ import sys
 sys.path.insert(0, '../')
 
 import unittest
-import lib.base as sinon
-from lib.mock import SinonMock
-from lib.sandbox import sinontest
+import sinon.base as sinon
+from sinon.mock import SinonMock
+from sinon.sandbox import sinontest
 
 """
 ======================================================
@@ -34,7 +34,7 @@ def D_func(err=False):
     else:
         return "test_local_D_func"
 
-from TestClass import ForTestOnly
+from test.test_Class import ForTestOnly
 """
 ======================================================
                  FOR TEST ONLY END
@@ -45,7 +45,7 @@ class TestSinonMock(unittest.TestCase):
     @sinontest
     def test001_constructor_inside_module(self):
         mock = SinonMock(A_object)
-        expectation = mock.expects("A_func") 
+        expectation = mock.expects("A_func")
 
     @sinontest
     def test002_constructor_outside_module(self):
@@ -127,7 +127,7 @@ class TestSinonMock(unittest.TestCase):
         expectation = mock.expects("func1").once().throws() #spy + stub
         with self.assertRaises(Exception) as context:
             fto.func1()
-        self.assertTrue(mock.verify()) 
+        self.assertTrue(mock.verify())
 
     @sinontest
     def test016_verify_once_with_returns(self):
@@ -135,8 +135,8 @@ class TestSinonMock(unittest.TestCase):
         fto = ForTestOnly()
         self.assertEqual(fto.func1(), "func1")
         expectation = mock.expects("func1").once().returns(None) #spy + stub
-        self.assertEqual(fto.func1(), None) 
-        self.assertTrue(mock.verify()) 
+        self.assertEqual(fto.func1(), None)
+        self.assertTrue(mock.verify())
 
     @sinontest
     def test030_verify_false(self):
@@ -144,7 +144,7 @@ class TestSinonMock(unittest.TestCase):
         fto = ForTestOnly()
         self.assertEqual(fto.func1(), "func1")
         expectation = mock.expects("func1").once().returns(None) #spy + stub
-        self.assertFalse(mock.verify()) 
+        self.assertFalse(mock.verify())
 
     @sinontest
     def test040_verify_reference_error(self):
@@ -153,7 +153,7 @@ class TestSinonMock(unittest.TestCase):
         self.assertEqual(fto.func1(), "func1")
         expectation = mock.expects("func1").once().returns(None) #spy + stub
         expectation.restore()
-        self.assertFalse(mock.verify()) 
+        self.assertFalse(mock.verify())
 
 
 class TestSinonMockExpectation(unittest.TestCase):

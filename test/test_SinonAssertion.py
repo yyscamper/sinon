@@ -2,12 +2,12 @@ import sys
 sys.path.insert(0, '../')
 
 import unittest
-import lib.base as sinon
-from lib.assertion import SinonAssertion
-from lib.spy import SinonSpy
-from lib.stub import SinonStub
-from lib.mock import SinonMock
-from lib.sandbox import sinontest
+import sinon.base as sinon
+from sinon.assertion import SinonAssertion
+from sinon.spy import SinonSpy
+from sinon.stub import SinonStub
+from sinon.mock import SinonMock
+from sinon.sandbox import sinontest
 
 """
 ======================================================
@@ -443,7 +443,7 @@ class TestSinonAssertion(unittest.TestCase):
         spy = SinonSpy(D_func)
         sinon.g.D_func(err=False)
         with self.assertRaises(Exception) as context:
-            SinonAssertion.threw(spy) 
+            SinonAssertion.threw(spy)
 
     @sinontest
     def test140_alwaysThrew_default_type(self):

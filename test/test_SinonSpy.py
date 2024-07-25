@@ -2,10 +2,10 @@ import sys
 sys.path.insert(0, '../')
 
 import unittest
-import lib.base as sinon
-from lib.spy import SinonSpy
-from lib.sandbox import sinontest
-from lib.matcher import SinonMatcher, Matcher
+import sinon.base as sinon
+from sinon.spy import SinonSpy
+from sinon.sandbox import sinontest
+from sinon.matcher import SinonMatcher, Matcher
 
 """
 ======================================================
@@ -132,7 +132,7 @@ class TestSinonSpy(unittest.TestCase):
         self.assertEqual(spy2.firstCall.callId, 1)
         self.assertEqual(spy3.firstCall.callId, 2)
         self.assertEqual(spy4.firstCall.callId, 3)
- 
+
     @sinontest
     def test051_calledBefore_calledAfter_normal(self):
         spy1 = SinonSpy(os, "system")
@@ -168,7 +168,7 @@ class TestSinonSpy(unittest.TestCase):
         self.assertFalse(spy2.calledBefore(spy1))
         self.assertFalse(spy2.calledAfter(spy1))
         self.assertFalse(spy1.calledAfter(spy2))
- 
+
     @sinontest
     def test053_calledBefore_calledAfter_recalled_method(self):
         spy1 = SinonSpy(os, "system")
@@ -461,7 +461,7 @@ class TestSinonSpy(unittest.TestCase):
     def test090_threw_without_err(self):
         spy = SinonSpy(D_func)
         sinon.g.D_func(err=False)
-        self.assertFalse(spy.threw()) 
+        self.assertFalse(spy.threw())
 
     @sinontest
     def test091_threw_with_err(self):
@@ -474,7 +474,7 @@ class TestSinonSpy(unittest.TestCase):
             sinon.g.D_func(err=MyException)
         except:
             pass
-        self.assertTrue(spy.threw()) 
+        self.assertTrue(spy.threw())
         self.assertTrue(spy.threw(MyException))
         self.assertFalse(spy.threw(ValueError))
 
@@ -489,7 +489,7 @@ class TestSinonSpy(unittest.TestCase):
         spy = SinonSpy(D_func)
         sinon.g.D_func(err=False)
         sinon.g.D_func(err=False)
-        self.assertFalse(spy.alwaysThrew()) 
+        self.assertFalse(spy.alwaysThrew())
 
     @sinontest
     def test093_alwaysThrew_with_same_err(self):
@@ -503,7 +503,7 @@ class TestSinonSpy(unittest.TestCase):
             sinon.g.D_func(err=MyException)
         except:
             pass
-        self.assertTrue(spy.alwaysThrew()) 
+        self.assertTrue(spy.alwaysThrew())
         self.assertTrue(spy.alwaysThrew(MyException))
 
         try:
@@ -649,8 +649,8 @@ class TestSinonSpy(unittest.TestCase):
         def func(f):
             f()
         spy = SinonSpy()
-        func(spy) 
-        self.assertTrue(spy.called)      
+        func(spy)
+        self.assertTrue(spy.called)
         self.assertTrue(spy.calledOnce)
 
     @sinontest
@@ -658,7 +658,7 @@ class TestSinonSpy(unittest.TestCase):
         def func(f):
             f(1)
         spy = SinonSpy()
-        func(spy) 
+        func(spy)
         self.assertTrue(spy.calledWith(1))
 
     @sinontest
